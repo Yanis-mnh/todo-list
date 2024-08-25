@@ -1,24 +1,37 @@
 import { SmallCloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const HandelOnClick = (Open: boolean) => {
-  return !Open;
-};
+import "../style/SideMenu.css";
 
 const SideMenu = () => {
   const [Open, SetOpen] = useState(false);
   return (
-    <div className="sideMenu">
-      <div
-        className="burger_button"
-        onClick={() => SetOpen(HandelOnClick(Open))}
-      >
-        {Open ? (
-          <HamburgerIcon boxSize={"2em"} />
-        ) : (
-          <SmallCloseIcon boxSize={"2em"} />
-        )}
-      </div>
+    <div className={Open ? "sideMenu" : "sideMenuOpen"}>
+      <BurgerButton Open={Open} SetOpen={SetOpen} />
+      <ul>
+        <li>test</li>
+        <li>test</li>
+      </ul>
+    </div>
+  );
+};
+
+interface BurgerButtonProps {
+  Open: boolean;
+  SetOpen: CallableFunction;
+}
+
+const BurgerButton: React.FC<BurgerButtonProps> = ({ Open, SetOpen }) => {
+  const HandelOnClick = (Open: boolean, SetOpen: CallableFunction) => {
+    SetOpen(!Open);
+  };
+  return (
+    <div className="burgerButton" onClick={() => HandelOnClick(Open, SetOpen)}>
+      {Open ? (
+        <SmallCloseIcon boxSize={"2em"} />
+      ) : (
+        <HamburgerIcon boxSize={"2em"} />
+      )}
     </div>
   );
 };

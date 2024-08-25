@@ -1,15 +1,31 @@
 *{
     box-sizing: border-box;
 }
-
+html,body{
+    margin: 0;
+    padding: 0;
+}
 .note_container{
+    
     display: grid;
     gap: 1em;
-    grid-template-columns: repeat(auto-fill,1fr);
+    padding: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: center;
+    justify-content: center;
     background-color: pink;
 }
 .note{
-    background-color: black;
+    border-radius: .5em ;
+    border: 1px solid black;
     width: 240px;
     height: 240px;
+}
+
+
+/* Desktop style*/
+@media(min-width:800px){
+    .note_container{
+        margin-inline: 20%;
+    }
 }
