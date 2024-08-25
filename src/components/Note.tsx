@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface NoteProps {
   titre: string;
@@ -6,10 +6,23 @@ interface NoteProps {
 }
 
 const Note: React.FC<NoteProps> = ({ titre, note }) => {
+  const [newTitre, setTitre] = useState(titre);
+  const [newNote, setNote] = useState(note);
+
+  const handleTitreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitre(e.target.value);
+  };
+  const handleNoteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNote(e.target.value);
+  };
   return (
     <div className="note">
-      <h3>{titre}</h3>
-      <p>{note}</p>
+      <input
+        value={newTitre}
+        onChange={handleTitreChange}
+        placeholder="Titre"
+      />
+      <input value={newNote} onChange={handleNoteChange} placeholder="Note" />
     </div>
   );
 };
