@@ -54,6 +54,14 @@ html, body{
     }
 }
 
+.addNoteButton{
+    background-color: black;
+    box-shadow: var(--note-shadow);
+    border: 2px solid var(--input-border-color);
+    padding: 1em;
+    border: 1px;
+}
+
 @media(min-width:800px){
     .note_container{
         margin-inline: 20%;

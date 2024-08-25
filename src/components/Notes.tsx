@@ -20,7 +20,10 @@ export default function Notes() {
 
   return (
     <>
-      <button onClick={() => HandelClick(" ", " ", notes, SetNotes)}>
+      <button
+        className="addNoteButton"
+        onClick={() => HandelClick(" ", " ", notes, SetNotes)}
+      >
         ADD NOTE
       </button>
       <div className="note_container">
