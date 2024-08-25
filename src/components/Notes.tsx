@@ -9,7 +9,7 @@ const HandelClick = (
 ) => {
   const newNotes = [...notes, [title, value]];
   SetNotes(newNotes);
-  console.log(notes);
+  scrollTo("lastItemAdded");
 };
 
 export default function Notes() {
@@ -20,17 +20,23 @@ export default function Notes() {
 
   return (
     <>
-      <button
-        className="addNoteButton"
-        onClick={() => HandelClick(" ", " ", notes, SetNotes)}
-      >
-        ADD NOTE
-      </button>
       <div className="note_container">
+        <button
+          className="addNoteButton"
+          onClick={() => HandelClick(" ", " ", notes, SetNotes)}
+        >
+          ADD NOTE
+        </button>
         {notes.map((value, index) => (
           <Note key={index} titre={value[0]} note={value[1]}></Note>
         ))}
+        <div id="lastItemAdded"></div>
       </div>
     </>
   );
 }
+
+const scrollTo = (id: string) => {
+  const element = document.getElementById(id)?.offsetTop;
+  window.scrollTo({ top: element, behavior: "smooth" });
+};
