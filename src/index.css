@@ -23,15 +23,13 @@ html, body{
     /* grid shit*/
     display: grid;
     gap: 1em;
-    grid-template-columns: repeat(auto-fill, 240px);
+    grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
     grid-template-rows: repeat(auto-fill,240px);
     align-items: center;
     justify-content: center;
     /* style shit*/
     
-    
     overflow-y: scroll;
-    padding: 1em;
 
 }
 .note{
@@ -42,8 +40,8 @@ html, body{
     background-color: var(--note-bg-color);
     border-radius: .5em;
     box-shadow: var(--note-shadow);
-
-    width: 240px;
+    min-width: 240px;
+    width: auto;
     height: 240px;
     
     & input{
@@ -62,17 +60,21 @@ html, body{
     position: fixed;
     right: 10px;
     top: 10px;
+    width: 5em;
+    height: auto;
+    background-color: transparent;
+    border: none;
 
-    background-color: black;
-    box-shadow: var(--note-shadow);
-    border: 2px solid var(--input-border-color);
-    padding: 1em;
-    border-radius: 1px;
-    
+    & img{
+        height: 100%;
+        width: 100%;
+        box-shadow: var(--note-shadow);
+        border-radius: 100%;
+    }
     
 }
 
-@media(min-width:800px){
+@media(min-width:900px){
     .note_container{
         margin-inline: 20%;
     }

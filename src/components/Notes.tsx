@@ -28,7 +28,7 @@ export default function Notes() {
           className="addNoteButton"
           onClick={() => HandelClick(" ", " ", notes, SetNotes)}
         >
-          ADD NOTE
+          <img src="icons/add_icon.png"></img>
         </button>
         {notes.map((value, index) => (
           <Note key={index} titre={value[0]} note={value[1]}></Note>
