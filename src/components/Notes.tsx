@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Note from "./Note";
 
 const HandelClick = (
@@ -9,7 +9,6 @@ const HandelClick = (
 ) => {
   const newNotes = [...notes, [title, value]];
   SetNotes(newNotes);
-  scrollTo("lastItemAdded");
 };
 
 export default function Notes() {
@@ -17,6 +16,10 @@ export default function Notes() {
     ["test", "potato"],
     ["test02", "potato02"],
   ]);
+
+  useEffect(() => {
+    scrollTo("bottomPage");
+  }, [notes]);
 
   return (
     <>
@@ -30,13 +33,15 @@ export default function Notes() {
         {notes.map((value, index) => (
           <Note key={index} titre={value[0]} note={value[1]}></Note>
         ))}
-        <div id="lastItemAdded"></div>
       </div>
     </>
   );
 }
 
 const scrollTo = (id: string) => {
-  const element = document.getElementById(id)?.offsetTop;
-  window.scrollTo({ top: element, behavior: "smooth" });
+  const element = document.getElementById(id);
+  const goTo =
+    element?.offsetTop != undefined ? element.offsetTop + 240 : undefined;
+  window.scrollTo({ top: goTo, behavior: "smooth" });
+  console.log(goTo);
 };

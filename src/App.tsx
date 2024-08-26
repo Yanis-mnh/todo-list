@@ -7,6 +7,7 @@ function App() {
     <>
       <SideMenu />
       <Notes />
+      <div id="bottomPage"></div>
     </>
   );
 }
